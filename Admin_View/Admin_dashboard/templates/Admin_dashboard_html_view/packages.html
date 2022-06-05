@@ -1,0 +1,91 @@
+
+{% extends 'main_navbar.html' %}
+
+
+
+
+{% block table %}
+
+   <table class="table table-responsive table-hover">
+    <thead>
+        <tr>
+        {% for recipients in Recipient %}
+
+            {% if forloop.first %}
+                {% for i in recipients %}
+                    <th>  {{i}}</th>
+                {% endfor %}
+            {% endif%}
+
+
+            {% if forloop.last %}
+                {% for i in recipients %}
+                 <th>   {{ i }} </th>
+
+                {% endfor %}
+            {% endif%}
+<!--            {% for key, value in recipients.items %}-->
+<!--                 {% if forloop.first %}-->
+<!--                    <th>{{ key}}</th>-->
+<!--                 {% endif%}-->
+<!--            {% endfor %}-->
+        {% endfor %}
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for recipients in Recipient %}
+
+            {% if forloop.counter|divisibleby:2 == 0 %}
+                <tr> </tr>
+            {% endif %}
+        <tr>
+            {% for key,value in recipients.items %}
+                <td>{{ value  }}</td>
+            {% endfor %}
+</tr>
+        {% endfor %}
+
+
+    </tbody>
+</table>
+
+
+{% endblock %}
+
+
+
+{%block pagination%}
+<span class="step-links">
+                    {% if Recipient.has_previous %}
+                        <a class="pagination-action" href="?page=1">
+                        <i class="fas fa-angle-double-left" aria-hidden="true"></i>
+                        </a>
+                        <a id="prev" class="pagination-action" href="?page={{ Recipient.previous_page_number }}">
+                        <i class="fas fa-angle-left" aria-hidden="true"></i>
+
+                        </a>
+                    {% endif %}
+
+
+                   {% for num in Recipient.paginator.page_range %}
+                    {% if num == Recipient.number %}
+                        <span class="pagination-number pagination-current" >{{num}}</span>
+                    {% elif num > Recipient.number|add:'-3' and num < Recipient.number|add:3 %}
+                         <a class="pagination-number" href="?page{{num}}"> {{num}}</a>
+                    {% endif%}
+                    {% endfor %}
+
+
+                    {% if Recipient.has_next %}
+                                <a id="next" class="pagination-action" href="?page={{ Recipient.next_page_number }}">
+                                    <i class="fas fa-angle-right" aria-hidden="true"></i>
+                                </a>
+                                <a class="pagination-action" href="?page={{Recipient.paginator.num_pages}}">
+                                <i class="fas fa-angle-double-right" aria-hidden="true"></i>
+                                 </a>
+                    {%endif%}
+            </span>
+
+{%endblock%}
+

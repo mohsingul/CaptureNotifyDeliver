@@ -1,0 +1,248 @@
+{%extends 'main_navbar.html'%}
+{%load static%}
+
+{%block browse%}
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ <script type="text/javascript">
+
+
+              $(document).ready(function(){
+           $("#about-btn").click( function(event) {
+        alert("You clicked the button using JQuery!");
+
+    });
+
+         }
+         );
+
+
+              $(document).ready(function(){
+           $("#btnup").click( function(event) {
+
+
+    });
+         });
+
+
+
+          $(document).ready(function(){
+            $('#fileup').change(function(){
+
+            var res=$('#fileup').val();
+            var arr = res.split("\\");
+            var filename=arr.slice(-1)[0];
+            filextension=filename.split(".");
+            filext="."+filextension.slice(-1)[0];
+            valid=[".jpg",".png",".jpeg",".bmp"];
+        //if file is not valid we show the error icon, the red alert, and hide the submit button
+            if (valid.indexOf(filext.toLowerCase())==-1){
+                $( ".imgupload" ).hide("slow");
+                $( ".imgupload.ok" ).hide("slow");
+                $( ".imgupload.stop" ).show("slow");
+
+                $('#namefile').css({"color":"red","font-weight":700});
+                $('#namefile').html("File "+filename+" is not  pic!");
+
+ 				$( "#cancelbtn" ).hide();
+                $( "#submitbtn" ).hide();
+
+                $( "#fakebtn" ).show();
+            }else{
+                //if file is valid we show the green alert and show the valid submit
+                $( ".imgupload" ).hide("slow");
+                $( ".imgupload.stop" ).hide("slow");
+                $( ".imgupload.ok" ).show("slow");
+
+                $('#namefile').css({"color":"green","font-weight":700});
+                $('#namefile').html(filename);
+
+                $( "#submitbtn" ).show();
+                $( "#cancelbtn" ).show();
+                $( "#fakebtn" ).hide();
+            }
+        });
+         }
+         );
+
+
+
+         $(document).ready(function() {
+
+            // input plugin
+            bsCustomFileInput.init();
+
+            // get file and preview image
+            $("#fileup").on('change', function() {
+                var input = $(this)[0];
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#preview').attr('src', e.target.result).fadeIn('slow');
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            })
+
+        })
+
+
+   </script>
+<!-- <script type="text/javascript"  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
+<link href="{% static 'js/jquery-3.5.0.min.js' %}" rel="stylesheet">
+<link href="{% static 'js/functions.js' %}" rel="stylesheet">
+
+<!--<form method="post" enctype="multipart/form-data" id="form_recog">-->
+<!--    {% csrf_token %}-->
+<!--            <div class="row">-->
+<!--            <input type="file"  name="file">-->
+<!--            </div>-->
+<!--            <div class="row">-->
+<!--            <button type="button" class="btn btn-success" style="center" onclick="btn_name()" >OK</button>-->
+<!--            </div>-->
+<!--</form>-->
+
+<!--<div class="image-preview" id="imagepreview">-->
+<!--	<input type="file" id="inpfile" name="inpfile">-->
+<!--	<img src="" alt="Image Preview" class="image-preview__image">-->
+<!--	<span class="image-preview__default-text">Image Preview</span>-->
+<!--</div>-->
+
+
+
+    <div class="container center" >
+	<div class="row">
+		<div class="col-md-12">
+			<h1 class="white">Upload Image for Recognition</h1>
+
+		</div>
+	</div>
+
+	<form name="upload"  method="post"  enctype="multipart/form-data" accept-charset="utf-8" action="{% url 'notification' %}">
+        {% csrf_token %}
+		<div class="row" >
+			<div class="col-md-6 col-md-offset-3 container center">
+				<div class="btn-container ">
+					<!--the three icons: default, ok file (img), error file (not an img)-->
+					<h1 class="imgupload"><i class="fa fa-file-image-o"></i></h1>
+					<h1 class="imgupload ok"><i class="fa fa-check"></i></h1>
+					<h1 class="imgupload stop"><i class="fa fa-times"></i></h1>
+					<!--this field changes dinamically displaying the filename we are trying to upload-->
+					<p id="namefile">Only pics allowed! (jpg,jpeg,bmp,png)</p>
+					<!--our custom btn which which stays under the actual one-->
+					<button type="button" id="btnup" class="btn btn-danger " >Browse...</button>
+					<!--this is the actual file input, is set with opacity=0 beacause we wanna see our custom one-->
+					<input type="file" value="" name="fileup" id="fileup">
+
+                        <img src="" class="img-fluid" id="preview"  />
+
+
+
+				</div>
+			</div>
+		</div>
+			<!--additional fields-->
+		<div class="row">
+			<div class="col-md-12">
+				<!--the defauld disabled btn and the actual one shown only if the three fields are valid-->
+                <input type="submit" value="Recognize!" class="btn btn-success" id="submitbtn">
+				<button type="button" class="btn btn-default" disabled="disabled" id="fakebtn">Recognize! <i class="fa fa-minus-circle"></i></button>
+
+			</div>
+		</div>
+	</form>
+</div>
+
+
+
+<!--<div class="container py-4">-->
+<!--    <div class="row">-->
+<!--        <div class="col-sm-4 mx-auto">-->
+<!--            <div class="input-group mb-3">-->
+<!--                <div class="custom-file">-->
+<!--                    <input type="file" class="custom-file-input" id="inputGroupFile">-->
+<!--                    <label class="custom-file-label" for="inputGroupFile" aria-describedby="inputGroupFileAddon">Choose image</label>-->
+<!--                </div>-->
+<!--                <div class="input-group-append">-->
+<!--                    <span class="input-group-text" id="inputGroupFileAddon">Upload</span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="border rounded-lg text-center p-3" style="center">-->
+<!--                <img src="" class="img-fluid" id="preview"  />-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+
+
+
+
+
+
+
+
+
+
+<!--    <div class="ml-2 col-sm-6">-->
+<!--  <div id="msg"></div>-->
+<!--  <form method="post" id="image-form">-->
+<!--    <input type="file" name="img[]" class="file" accept="image/*">-->
+<!--    <div class="input-group my-3">-->
+<!--      <input type="text" class="form-control" disabled placeholder="Upload File" id="file">-->
+<!--      <div class="input-group-append">-->
+<!--        <button type="button" class="browse btn btn-primary">Browse...</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </form>-->
+<!--</div>-->
+<!--<div class="ml-2 col-sm-6">-->
+<!--  <img src="https://placehold.it/80x80" id="preview" class="img-thumbnail">-->
+<!--</div>-->
+
+<!--  <div class="frame">-->
+<!--	<div class="center">-->
+<!--		<div class="title">-->
+<!--			<h1>Drop file to upload</h1>-->
+<!--		</div>-->
+
+<!--		<div class="dropzone">-->
+<!--			<img src="http://100dayscss.com/codepen/upload.svg" class="upload-icon" />-->
+<!--			<input type="file" class="upload-input" />-->
+<!--		</div>-->
+
+<!--		<button type="button" class="btn" name="uploadbutton">Upload file</button>-->
+
+<!--	</div>-->
+<!--</div>-->
+
+
+<!--            <div class="text-center p-3">-->
+<!--                <img src="//placehold.it/140?text=IMAGE" class="img-fluid" id="preview" />-->
+<!--            </div>-->
+
+<!--</form>-->
+
+<!--    </form>-->
+
+{%endblock%}
+
+
+{%block output_ner%}
+ <table class="table table-responsive">
+               <tr>
+                   <th>Recipient Name</th>
+                    <td>{{Recipient_name}}</td>
+               </tr>
+                <tr>
+
+                       <th> <label>Department</label></th>
+
+
+                    <th><label>{{Department}}</label></th>
+
+                </tr>
+           </table>
+
+{%endblock%}

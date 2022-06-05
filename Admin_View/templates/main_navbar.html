@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+  <head>
+  	<title>Sidebar 01</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'vendor/fontawesome-free/css/all.min.css'%}" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="{% static 'css/style.css'%}">
+      <link href="{% static 'css/practice_css.css' %}" rel="stylesheet">
+
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+      <link href="{% static 'css/home.css' %}" rel="stylesheet">
+      <link href="{% static 'css/jquery.datetimepicker.css'%}" type="text/css" rel="stylesheet" >
+      <link rel="stylesheet"  href="{% static 'vendor/animate/animate.css'%}">
+
+	<link rel="stylesheet" href="{% static 'vendor/css-hamburgers/hamburgers.min.css'%}">
+
+	<link rel="stylesheet"  href="{ %static 'vendor/select2/select2.min.css'%}">
+	<link rel="stylesheet"  href="{ %static 'css/util.css'%}">
+	<link rel="stylesheet"  href="{ %static 'css/main.css'%}">
+
+
+      <link href="{% static 'js/jquery-3.5.0.min.js' %}" rel="stylesheet">
+       <script defer src="https://use.fontawesome.com/releasesv5.0.6/js/all.js" ></script>
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+<!--<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" rel="stylesheet">-->
+<!--       <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"  rel="stylesheet">-->
+<!--      <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" rel="stylesheet">-->
+<!--<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>-->
+<!--      <link href="https://100dayscss.com/codepen/js/jquery.min.js" rel="stylesheet">-->
+
+
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+
+
+
+      <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+
+
+<!-- Bootstrap Js CDN -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- Custom fonts for this template-->
+
+<!--<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" >-->
+     <script src="js/jquery.datetimepicker.full.min.js"></script>
+
+
+  </head>
+  <body>
+
+<script src = "{% static 'js/functions.js' %}"> </script>
+<script type="text/javascript">
+              function ajax_get_update()
+            {
+               $.get(url, function(results){
+                  var table = $("table", results);
+                  var span = $("span.step-links", results);
+
+                  //update the ajax_table_result with the return value
+                  $('#ajax_table_result').html(table);
+                  $('.step-links').html(span);
+                }, "html");
+            }
+
+
+            $( document ).ready( function() {
+                $( '.step-links #prev' ).click( function(e) {
+                    e.preventDefault();
+                    url = ($( '.step-links #prev' )[0].href);
+                    ajax_get_update();
+                });
+                $( '.step-links #next' ).click( function(e) {
+                    e.preventDefault();
+                    url = ($( '.step-links #next' )[0].href);
+                    ajax_get_update();
+
+                });
+            });
+
+        //since the links are reloaded we have to bind the links again
+        //to the actions
+            $( document ).ajaxStop( function() {
+                $( '.step-links #prev' ).click( function(e) {
+                    e.preventDefault();
+                    url = ($( '.step-links #prev' )[0].href);
+                    ajax_get_update();
+                });
+                $( '.step-links #next' ).click( function(e) {
+                    e.preventDefault();
+                    url = ($( '.step-links #next' )[0].href);
+                    ajax_get_update();
+                });
+            });
+             $('.js-tilt').tilt({
+                    scale: 1.1
+                })
+
+    </script>
+
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+                <div class="p-4 pt-5" >
+<!--		  		<a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.jpg);">-->
+
+                    <div class="contact1-pic js-tilt" data-tilt>
+                        <div class="row">
+                            <a href="{%url ''%}">
+                            <img src="{% static 'images/img-01.png' %}" alt="IMG" width="150" align="center">
+                            <h2   class="white" align="center">Capture Notify and Deliver</h2>
+                            </a>
+                        </div>
+			        </div>
+
+<!--                </a>-->
+
+                <ul class="list-unstyled components mb-5">
+                    <li>
+                            <a href="{%url 'home'%}" ><span class="fa fa-home fa-fw mr-3"></span> Home</a>
+                    </li>
+                  <li >
+
+
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="active dropdown-toggle" ><span class="fa fa-truck fa-fw mr-3"></span> Packages</a>
+
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+
+                        <li>
+
+                                <a href="{%url 'allpackages'%}">
+                                     All
+                                </a>
+
+                    </li>
+                    <li>
+                            <form method="get">
+                            <a href="{%url 'pendingpackages'%}">Pending</a>
+                                </form>
+                    </li>
+                    <li>
+                        <a href="{%url 'collectedpackages'%}" >Collected</a>
+                    </li>
+                    </ul>
+
+                    </li>
+                  <li>
+                  <a href="{%url 'members'%}"><span class="fa fa-users fa-fw mr-3"></span>  Members</a>
+                  </li>
+                    <li>
+                      <a href="#"><span class="fa fa-info-circle fa-fw mr-3"></span>About</a>
+                  </li>
+                  <li>
+                  <a href=""><span class="fa fa-sign-out fa-fw mr-3"></span>Logout</a>
+                  </li>
+                </ul>
+
+	        <div class="footer">
+<!--	        	<p>&lt;!&ndash; Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. &ndash;&gt;-->
+<!--						  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>-->
+<!--						  &lt;!&ndash; Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. &ndash;&gt;</p>-->
+	        </div>
+
+	      </div>
+    	</nav>
+
+
+
+   <div id="content" class="p-4 p-md-5" >
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+
+            <button type="button" id="sidebarCollapse" class="btn btn-primary">
+              <i class="fa fa-bars"></i>
+              <span class="sr-only">Toggle Menu</span>
+            </button>
+            <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{%url 'home'%}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Logout</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+
+
+<!--<div id="div_alldata" class="container" >-->
+<!-- <form class="" id="action-selecter" action="{{ request.path }}" method="get">-->
+<!--     {%csrf_token%}-->
+<!-- <div id="ajax_table_result">-->
+<!--     {%block table%}-->
+<!--      <table class="table table-responsive table-hover">-->
+<!--    <thead>-->
+<!--        <tr>-->
+<!--        {% for recipients in Recipient %}-->
+
+<!--            {% if forloop.first %}-->
+<!--                {% for i in recipients %}-->
+<!--                    <th>  {{i}}</th>-->
+<!--                {% endfor %}-->
+<!--            {% endif%}-->
+
+
+<!--            {% if forloop.last %}-->
+<!--                {% for i in recipients %}-->
+<!--                 <th>   {{ i }} </th>-->
+
+<!--                {% endfor %}-->
+<!--            {% endif%}-->
+<!--&lt;!&ndash;            {% for key, value in recipients.items %}&ndash;&gt;-->
+<!--&lt;!&ndash;                 {% if forloop.first %}&ndash;&gt;-->
+<!--&lt;!&ndash;                    <th>{{ key}}</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                 {% endif%}&ndash;&gt;-->
+<!--&lt;!&ndash;            {% endfor %}&ndash;&gt;-->
+<!--        {% endfor %}-->
+
+<!--        </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--        {% for recipients in Recipient %}-->
+
+<!--            {% if forloop.counter|divisibleby:2 == 0 %}-->
+<!--                <tr> </tr>-->
+<!--            {% endif %}-->
+<!--        <tr>-->
+<!--            {% for key,value in recipients.items %}-->
+<!--                <td>{{ value  }}</td>-->
+<!--            {% endfor %}-->
+<!--</tr>-->
+<!--        {% endfor %}-->
+
+
+<!--    </tbody>-->
+<!--</table>-->
+<!--{% endblock %}-->
+<!--     </div>-->
+<!-- </form>-->
+
+<!--  <div class="pagination" style="align:center">-->
+<!--      {%block pagination%}-->
+<!--<span class="step-links">-->
+<!--                    {% if Recipient.has_previous %}-->
+<!--                        <a class="pagination-action" href="?page=1">-->
+<!--                        <i class="fas fa-angle-double-left" aria-hidden="true"></i>-->
+<!--                        </a>-->
+<!--                        <a id="prev" class="pagination-action" href="?page={{ Recipient.previous_page_number }}">-->
+<!--                        <i class="fas fa-angle-left" aria-hidden="true"></i>-->
+
+<!--                        </a>-->
+<!--                    {% endif %}-->
+
+
+<!--                   {% for num in Recipient.paginator.page_range %}-->
+<!--                    {% if num == Recipient.number %}-->
+<!--                        <span class="pagination-number pagination-current" >{{num}}</span>-->
+<!--                    {% elif num > Recipient.number|add:'-3' and num < Recipient.number|add:3 %}-->
+<!--                         <a class="pagination-number" href="?page{{num}}"> {{num}}</a>-->
+<!--                    {% endif%}-->
+<!--                    {% endfor %}-->
+
+
+<!--                    {% if Recipient.has_next %}-->
+<!--                                <a id="next" class="pagination-action" href="?page={{ Recipient.next_page_number }}">-->
+<!--                                    <i class="fas fa-angle-right" aria-hidden="true"></i>-->
+<!--                                </a>-->
+<!--                                <a class="pagination-action" href="?page={{Recipient.paginator.num_pages}}">-->
+<!--                                <i class="fas fa-angle-double-right" aria-hidden="true"></i>-->
+<!--                                 </a>-->
+<!--                    {%endif%}-->
+<!--            </span>-->
+
+<!--{%endblock%}-->
+
+
+
+
+<!--</div>-->
+
+<!--  </div>-->
+
+
+
+<div  id="div_home" >
+
+    {%block browse%}
+
+        {%endblock%}
+
+
+
+<div id="div_output" style="visibility:hidden" >
+
+       <div class="row" >
+
+          {%block output_ner%}
+
+           {%endblock%}
+        </div>
+
+       </div>
+
+
+</div>
+
+
+   <div id="entities_recog">
+       {%block entities_rocognition%}
+
+       {%endblock%}
+
+   </div>
+
+   <div id="letter_form">
+       {%block letter_form%}
+
+       {%endblock%}
+
+   </div>
+
+    <div id="all_packages">
+        {%block all_packages%}
+        {%endblock%}
+
+    </div>
+
+       <div id="collectedpackages">
+        {%block collectedpackages%}
+        {%endblock%}
+
+        </div>
+
+       <div id="members" class="row">
+        {%block members%}
+        {%endblock%}
+
+        </div>
+
+        <div id="pendingpackages" class="row">
+        {%block pendingpackages%}
+        {%endblock%}
+
+        </div>
+
+
+       </div>
+
+
+ </div>
+
+<!--    <script src="{% static 'js/popper.js' %}"></script>-->
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/jquery.min.js'%}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+	<script src="{% static 'vendor/tilt/tilt.jquery.min.js' %}"></script>
+    <script src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'js/dataTables.bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+
+
+
+
+
+  </body>
+</html>

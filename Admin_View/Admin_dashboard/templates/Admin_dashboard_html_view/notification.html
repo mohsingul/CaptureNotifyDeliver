@@ -1,0 +1,306 @@
+{%extends 'main_navbar.html'%}
+{%load static%}
+
+
+
+
+
+{%block entities_rocognition%}
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+ <script type='text/javascript'>
+
+
+
+
+             $(document).ready(function(){
+                var all_tr = $('tr');
+               $("#btntick").click( function(event) {
+                     var row_index = ($(this).index());
+                   $('#row').text($(this).index()+1);
+                     all_tr.removeClass('selected');
+                     $(this).closest('tr').addClass('selected');
+            });
+            });
+
+
+             $(document).ready(function(){
+                var all_tr = $('tr');
+
+               $("#btn_edit_dist").click( function(event) {
+                 $('#table_reg').find('tr').click( function(){
+                     var row_index = ($(this).index());
+                     $('#row').val(row_index)
+                     all_tr.removeClass('selected');
+                     $(this).closest('tr').addClass('selected');
+            });
+            });
+            });
+
+
+
+
+                     $(document).ready(function(){
+                   $("#notify").click( function(event) {
+                alert("Notification is Sent Successfully");
+
+            });
+
+                 }
+                 );
+            function showletform()
+            {
+                document.getElementById("letterform").style.visibility="visible";
+            }
+
+
+
+
+
+  </script>
+
+
+<div class="container center" >
+	<div class="row">
+		<div class="col-md-12">
+			<h2 class="white">{{heading}}</h2>
+
+		</div>
+
+	</div>
+
+    <table class="table table-bordered table-stripped" id="table_reg" style="background-color:#FFFFFF; width:95%; margin-top:20px">
+
+        <thead class="thead-dark">
+
+      <tr>
+<!--           {%for key in keys%}-->
+                 <th>Name</th>
+                 <th>Department</th>
+                 <th>Email</th>
+                <th> Action </th>
+
+<!--           {%endfor%}-->
+      </tr>
+        </thead>
+     <tbody>
+
+
+
+          {%for reg_user in registered_user%}
+                <tr>
+                     <td>{{reg_user.Name}}</td>
+                     <td>{{reg_user.Deptname}}</td>
+                     <td>{{reg_user.Email}}</td>
+                     <td> <button id="btntick" onclick="showletform()"><img src="{% static 'images/tick.png' %}" width="20"/></button> </td>
+                 </tr>
+          {%endfor%}
+
+
+
+
+          {%for reg_user in edit_dist_list%}
+                <tr>
+                     <td>{{reg_user.Name}}</td>
+                     <td>{{reg_user.Deptname}}</td>
+                     <td>{{reg_user.Email}}</td>
+                     <td> <button id="btn_edit_dist" onclick="showletform()"><img src="{% static 'images/tick.png' %}" width="20"/></button> </td>
+                   </tr>
+          {%endfor%}
+
+
+
+
+     </tbody>
+    </table>
+
+</div>
+
+<!--  {%for members in editdistance%}-->
+<!--     {{members}}-->
+<!--  {%endfor%}-->
+
+
+
+<!--	<div class="contact1">-->
+<!--		<div class="container-contact1">-->
+<!--			<div class="contact1-pic js-tilt" data-tilt>-->
+<!--				<img src="{% static 'images/img-01.png' %}" alt="IMG">-->
+<!--			</div>-->
+
+<!--			<form class="contact1-form validate-form">-->
+<!--				<span class="contact1-form-title">-->
+<!--					Get in touch-->
+<!--				</span>-->
+
+<!--				<div class="wrap-input1 validate-input" data-validate = "Name is required">-->
+<!--					<input class="input1" type="text" name="name" placeholder="Name">-->
+<!--					<span class="shadow-input1"></span>-->
+<!--				</div>-->
+
+<!--				<div class="wrap-input1 validate-input" data-validate = "Valid email is required: ex@abc.xyz">-->
+<!--					<input class="input1" type="text" name="email" placeholder="Email">-->
+<!--					<span class="shadow-input1"></span>-->
+<!--				</div>-->
+
+<!--				<div class="wrap-input1 validate-input" data-validate = "Subject is required">-->
+<!--					<input class="input1" type="text" name="subject" placeholder="Subject">-->
+<!--					<span class="shadow-input1"></span>-->
+<!--				</div>-->
+
+<!--				<div class="wrap-input1 validate-input" data-validate = "Message is required">-->
+<!--					<textarea class="input1" name="message" placeholder="Message"></textarea>-->
+<!--					<span class="shadow-input1"></span>-->
+<!--				</div>-->
+
+<!--				<div class="container-contact1-form-btn">-->
+<!--					<button class="contact1-form-btn">-->
+<!--						<span>-->
+<!--							Send Email-->
+<!--							<i class="fa fa-long-arrow-right" aria-hidden="true"></i>-->
+<!--						</span>-->
+<!--					</button>-->
+<!--				</div>-->
+<!--			</form>-->
+<!--		</div>-->
+<!--	</div>-->
+
+
+{%endblock%}
+
+
+
+{%block letter_form%}
+
+
+    <link href="{% static 'vendor/select2_form/select2.min.css'%}" rel="stylesheet" media="all">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.js"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css" rel="stylesheet"/>
+
+    <link href="{% static 'css/main_form.css'%}" type="text/css" rel="stylesheet" >
+
+
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css" type="text/css" rel="stylesheet" media="all">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'%}"  rel="stylesheet" >
+
+
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" type="text/css"></script>
+    <script src="{% static 'css\bootstrap-datetimepicker.css'%}" type="text/css">
+    <script src="{% static 'css\bootstrap-datetimepicker.min.css'%}" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+    <script src="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/v4.0.0/build/css/bootstrap-datetimepicker.css" type="text/css"></script>
+    <script src="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/v4.0.0/src/js/bootstrap-datetimepicker.js"></script>
+
+    <link href="{% static 'js/bootstrap-datetimepicker.js'%}"  rel="stylesheet">
+    <link href="{% static 'js/bootstrap-datetimepicker.min.js'%}"  rel="stylesheet">
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+
+    <script type='text/javascript'>
+
+             $(document).ready(function()
+             {
+
+               $('#date').datetimepicker({
+                    timepicker: true;
+                    datepicker: true;
+                    format: 'Y-m-d H:1';
+                    value: '23-04-2020';
+                    hours12: true;
+                    step:5;
+                  });
+                });
+        </script>
+
+
+
+
+<div class="wrapper wrapper--w790" style="visibility:hidden; margin-left:0px; margin-top:20px;" id="letterform">
+    <div class="card card-5" >
+        <div class="card-heading">
+            <h2 class="title">Letter Information</h2>
+        </div>
+
+        <div class="card-body">
+        <form method="POST"  enctype="multipart/form-data" action="{%url 'home' %}">
+            {%csrf_token%}
+
+            <div class="form-row ">
+                <div class="name">ID</div>
+
+                <div class="value">
+                    <div class="input-group-desc">
+                        <input type="hidden" id="row" name="row_index">
+                        <input type="hidden" name="doc_id" value="{{doc_id}}">
+                        <input type="hidden" name="email_editdt" value="{{email_editdist}}">
+                        {%for record in doc_id_editdist%}
+                            <input type="hidden" name="doc_id_editdist" value="{{record}}">
+                        {%endfor%}
+                        <input type="hidden" name="id" value="{{id}}">
+                        <input class="input--style-5" name="idd" value="{{id}}" disabled="disabled"  >
+                        <p style="color:#ff4b5a">Please mention this ID on the mail</p>
+                    </div>
+                    </div>
+
+
+                </div>
+
+            <div class="form-row ">
+                <div class="name">Sender</div>
+
+                <div class="value" >
+                    <div class="input-group-desc">
+                        <input type="hidden" name="email" value="{{email}}">
+                        <input class="input--style-5" placeholder="Sender" name="sender" type="text">
+                    </div>
+                    </div>
+
+
+                </div>
+                <div class="form-row">
+                <div class="name">Date of Arrival</div>
+                <div class="value">
+                    <div class="input-group">
+                        <input class="input--style-5"  disabled="disabled" value={{time}}>
+                       <input class="input--style-5" type="hidden" value={{time}} name="date">
+                    </div>
+                </div>
+                </div>
+                <div class="form-row">
+                    <div class="name">Status</div>
+                    <div class="value">
+                        <div class="input-group">
+                            <input class="input--style-5"  disabled="disabled" value="pending" >
+                            <input class="input--style-5" type="hidden" value="pending" name="status">
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <button class="btn btn--radius-2 btn--red" type="submit" id="notify">Send Notification</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+ <script src="{% static 'vendor/jquery_form/jquery.min.js'%}"></script>
+
+    <script src="{% static 'vendor/select2_form/select2.min.js'%}"></script>
+
+    <script src="{% static 'js/global_form.js'%}"></script>
+<script src="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/v4.0.0/src/js/bootstrap-datetimepicker.js"></script>
+
+
+{%endblock%}

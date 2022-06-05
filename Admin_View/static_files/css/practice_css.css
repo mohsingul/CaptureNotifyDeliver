@@ -1,0 +1,68 @@
+/*!
+ * Start Bootstrap - SB Admin 2 v4.0.7 (https://startbootstrap.com/template-overviews/sb-admin-2)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-sb-admin-2/blob/master/LICENSE)
+ */
+
+/*!
+ * Bootstrap v4.3.1 (https://getbootstrap.com/)
+ * Copyright 2011-2019 The Bootstrap Authors
+ * Copyright 2011-2019 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+body {
+  margin 0;
+  font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #858796;
+  text-align: left;
+  background-color: #fff;
+}
+
+pagination
+{
+    text-align: center;
+    margin-top: 1em;
+
+}
+.pagination-action
+{
+    margin: 0 0.1em;
+    display: inline-block;
+    padding: 0.5em;
+    color: #B9B9B9;
+    font-size: 1.3em;
+
+
+}
+
+pagination-action:hover
+{
+    color: #3354AA;
+
+}
+
+
+
+.pagination-number
+{
+
+    padding: 0.5em 0.8em;
+    background-color: #6D85C7;
+    color: #fff;
+    border-radius: 2px;
+}
+
+.pagination-number:hover, .pagination-current
+{
+
+    background-color: #3354AA;
+
+}
+
+
+
+

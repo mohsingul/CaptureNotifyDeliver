@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+{%load static%}
+
+<head>
+    <meta charset="UTF-8">
+    <title>navbar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script  href="{%static 'js/csi.min.js'%}" rel="stylesheet"></script>
+</head>
+<body>
+
+
+ <div id="sidebar">
+        {% block sidebar %}
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/blog/">Blog</a></li>
+        </ul>
+        {% endblock %}
+    </div>
+
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+
+<!--    <nav id="navbar">-->
+<!--                <div class="p-4 pt-5" >-->
+<!--&lt;!&ndash;		  		<a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.jpg);">&ndash;&gt;-->
+<!--                    <h2 align="center">Capture Notify and Deliver</h2>-->
+<!--&lt;!&ndash;                </a>&ndash;&gt;-->
+
+<!--                <ul class="list-unstyled components mb-5">-->
+<!--                    <li>-->
+<!--                            <a href="#" onclick="home()">Home</a>-->
+<!--                    </li>-->
+<!--                  <li >-->
+
+
+<!--                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="active dropdown-toggle" >Packages</a>-->
+
+<!--                    <ul class="collapse list-unstyled" id="homeSubmenu">-->
+
+<!--                        <li>-->
+<!--                            <form method="get">-->
+<!--                                <a href="#" onclick="allpackages()" >-->
+<!--                                     All-->
+<!--                                </a>-->
+<!--                        </form>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                            <form method="get">-->
+<!--                            <a href="?parameter=pendingpackages#" name="pending" onclick="allpackages()">Pending</a>-->
+<!--                                </form>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href=" " >Collected</a>-->
+<!--                    </li>-->
+<!--                    </ul>-->
+
+<!--                    </li>-->
+
+<!--                  <li>-->
+<!--                      <a href="#">About</a>-->
+<!--                  </li>-->
+<!--                  <li>-->
+<!--                  <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>-->
+<!--                  <ul class="collapse list-unstyled" id="pageSubmenu">-->
+<!--                    <li>-->
+<!--                        <a href="#">Page 1</a>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="#">Page 2</a>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="#">Page 3</a>-->
+<!--                    </li>-->
+<!--                  </ul>-->
+<!--                  </li>-->
+<!--                  <li>-->
+<!--                  <a href="#">Portfolio</a>-->
+<!--                  </li>-->
+<!--                  <li>-->
+<!--                  <a href="#">Contact</a>-->
+<!--                  </li>-->
+<!--                </ul>-->
+
+<!--	        <div class="footer">-->
+<!--&lt;!&ndash;	        	<p>&lt;!&ndash; Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;						  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>&ndash;&gt;-->
+<!--&lt;!&ndash;						  &lt;!&ndash; Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. &ndash;&gt;</p>&ndash;&gt;-->
+<!--	        </div>-->
+
+<!--	      </div>-->
+<!--    	</nav>-->
+
+    <script src="{% static 'js/popper.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+     <script src="{% static 'js/jquery.min.js'%}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>
